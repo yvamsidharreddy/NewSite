@@ -2,30 +2,99 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="tabs.css">
-<script type="text/javascript" src="opentab.js"></script>
+<style>
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 30%;
+  height: 300px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 300px;
+}
+</style>
 </head>
 <body>
+
+<h2>Vertical Tabs</h2>
+<p>Click on the buttons inside the tabbed menu:</p>
+
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
+  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
 </div>
 
-<div id="Home" class="tabcontent">
-<p>Population is increasing; land is decreasing, so it is very necessary to increase productivity of crops. Currently agriculture contributes roughly 17% of India's GDP which was 43% in 1970. In last 10 years, agricultural growth has been approximately 1.5% while India's GDP has grown over 7%. Abate the unending struggles of farmers in India, the government has time to time brought many institutional as well as technological reforms to help the farmers, providing various schemes and funding to farmers Government interferes in everything right from buying seeds and fertilizers to selling it in the market. Massive amounts of public money are spent in subsidies, all the schemes are running in our country but the problem is that these schemes are not reached to every farmer.</p>
-<p>So we have to adopt better methodology to spread these schemes so that farmers can get their every right and can live a better life. There are number of websites, SMS services, and Agriculture centers available for agricultural news. Websites for farmers that'll give them practical advice on pesticides, fertilizers, soil types and easy ways to identify crop diseases, in all Indian languages. 
-There are several websites that can be helpful for farmers in India. We are bringing all necessary information relating to agriculture and dairy farms in one place to give awareness to farmers about new emerging technologies and method.</p>
-<p>Following Information are provided to formers through this website.</p>
-
-<p>1. Crop Insurance </p>
-<p>2. Best market opportunities</p>
-<p>3. High yielding variety of seeds subsidized by Govt.</p>
-<p>4. About soil testing, natural fertilizers and hazards of chemical fertilizers, insecticides etc</p>
-<p>5. Teaching them the new farming techniques and use new advance tools</p>
-<p>6. Educating them for mixed farming techniques</p>
-<p>7. About weather forecasting, changing climate, effects of deforestation etc.</p>
-<p>8. New method of irrigation like drop farming</p>
-<p>9. Food storage warehouses</p>
-<p>10.Various bank schemes of easy loans and low interest rates</p>
+<div id="London" class="tabcontent">
+  <h3>London</h3>
+  <p>London is the capital city of England.</p>
 </div>
+
+<div id="Paris" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
 </body>
 </html> 
